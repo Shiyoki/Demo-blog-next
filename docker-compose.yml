@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  awf-next:
+    build:
+      context: .
+      dockerfile: ./.docker/next/Dockerfile
+    image: next
+    container_name: next
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/.next
+    networks:
+      test:
+
+networks:
+  test:
+    external: true
